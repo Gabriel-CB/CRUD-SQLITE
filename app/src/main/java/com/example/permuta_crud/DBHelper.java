@@ -212,7 +212,7 @@ public class DBHelper  extends SQLiteOpenHelper {
                 cursor.moveToLast();
                 size = cursor.getPosition();
             }
-Log.e("frag", String.valueOf(size));
+
             if(size == -1) {
                 db.execSQL("DELETE FROM " + table + " WHERE ID = " + id);
 
