@@ -12,11 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PermutaCRUD"
         tools:targetApi="31">
-
-        <activity android:name=".main.FormProdutos" android:exported="true" android:theme="@style/Theme.PermutaCRUD"/>
-
-        <activity android:name=".main.FormFornecedores" android:exported="true" android:theme="@style/Theme.PermutaCRUD"/>
-
+        <activity
+            android:name=".DeleteProduct"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteSuplier"
+            android:exported="false" />
+        <activity
+            android:name=".main.FormProdutos"
+            android:exported="true"
+            android:theme="@style/Theme.PermutaCRUD" />
+        <activity
+            android:name=".main.FormFornecedores"
+            android:exported="true"
+            android:theme="@style/Theme.PermutaCRUD" />
         <activity
             android:name=".Home"
             android:exported="true"

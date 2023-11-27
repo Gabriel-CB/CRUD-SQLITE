@@ -201,4 +201,38 @@ public class DBHelper  extends SQLiteOpenHelper {
             Log.e("frag","Erro ao atualiar os/as " +table+": "+e.getMessage());
         }
     }
+
+    public void delete (String table, String id, Context context){
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            int size = -1;
+            if(table == "fornecedores"){
+                Cursor cursor = db.rawQuery("Select * FROM produtos WHERE fornecedor_id = " + id, null);
+
+                cursor.moveToLast();
+                size = cursor.getPosition();
+            }
+Log.e("frag", String.valueOf(size));
+            if(size == -1) {
+                db.execSQL("DELETE FROM " + table + " WHERE ID = " + id);
+
+                Toast.makeText(
+                        context, "Registro excluido com sucesso!",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }else{
+                Toast.makeText(
+                        context, "Não foi possivel excluir pois ha um produto cadastrado com esse fornecedor!",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            Toast.makeText(
+                    context, "Não foi possivel excluir o registro!",
+                    Toast.LENGTH_LONG
+            ).show();
+            Log.e("frag","Erro ao excluir o/a " +table+": " +e.getMessage());
+        }
+    }
 }

@@ -111,6 +111,17 @@
                     android:longClickable="false"
                     />
             </LinearLayout>
+            <Button
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/deleteProdutct"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/secondary"
+                android:layout_width="90dp"
+                android:paddingHorizontal="0dp"
+                android:layout_height="wrap_content"
+                android:text="Excluir"
+                />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 

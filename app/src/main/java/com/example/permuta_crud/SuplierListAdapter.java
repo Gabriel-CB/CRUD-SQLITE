@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.permuta_crud.main.FormFornecedores;
@@ -45,8 +46,11 @@ public class SuplierListAdapter extends RecyclerView.Adapter<SuplierListAdapter.
         holder.id.setText(dados.get(position).id);
 
         CardView cardView = holder.itemView.findViewById(R.id.cardInfo);
+        Button btnDelete = holder.itemView.findViewById(R.id.deleteFornecedor);
 
-        Button btnAdd = holder.itemView.findViewById(R.id.addFornecedor);
+        RecyclerView rv = holder.itemView.findViewById(R.id.formFornecedores);
+
+        DBHelper db = new DBHelper(ctx);
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +71,21 @@ public class SuplierListAdapter extends RecyclerView.Adapter<SuplierListAdapter.
                 startActivity(v.getContext(), intent, null);
             }
         });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DeleteSuplier.class);
+
+                intent.putExtra(
+                        "id",
+                        dados.get(position).id
+                );
+
+                startActivity(v.getContext(), intent, null);
+            }
+        });
+
     }
 
     @Override

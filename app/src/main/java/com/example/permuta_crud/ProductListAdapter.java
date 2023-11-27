@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         holder.suplier_name.setText(dados.get(position).suplier_name);
 
         CardView cardView = holder.itemView.findViewById(R.id.cardInfo);
+        Button btnDelete = holder.itemView.findViewById(R.id.deleteProdutct);
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +71,20 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 intent.putExtra(
                         "suplier_name",
                         dados.get(position).suplier_name
+                );
+
+                startActivity(v.getContext(), intent, null);
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DeleteProduct.class);
+
+                intent.putExtra(
+                        "id",
+                        dados.get(position).id
                 );
 
                 startActivity(v.getContext(), intent, null);
