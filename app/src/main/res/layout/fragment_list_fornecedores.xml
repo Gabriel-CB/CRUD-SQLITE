@@ -17,8 +17,20 @@
         android:text="Adicionar Fornecedor"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/text"
         android:layout_below="@id/addFornecedor"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:text="Atenção: Para editar informações clique no card !"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv"/>
