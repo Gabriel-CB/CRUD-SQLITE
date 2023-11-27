@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.permuta_crud.ListProdutos"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_list_produtos">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_formProdutos"
+            app:destination="@id/formProdutos" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.permuta_crud.ListFornecedores"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_list_fornecedores">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_formFornecedores"
+            app:destination="@id/formFornecedores" />
+    </fragment>
+    <activity
+        android:id="@+id/formProdutos"
+        android:name="com.example.permuta_crud.main.FormProdutos"
+        android:label="activity_form_produtos"
+        tools:layout="@layout/activity_form_produtos" />
+    <activity
+        android:id="@+id/formFornecedores"
+        android:name="com.example.permuta_crud.main.FormFornecedores"
+        android:label="activity_form_fornecedores"
+        tools:layout="@layout/activity_form_fornecedores" />
+</navigation>
