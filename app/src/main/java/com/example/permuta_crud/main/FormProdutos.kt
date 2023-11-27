@@ -1,5 +1,6 @@
 package com.example.permuta_crud.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView.OnItemClickListener
@@ -90,9 +91,41 @@ class FormProdutos : AppCompatActivity() {
             }
         })
 
+        binding.addFornecedor.setOnClickListener({
+            var intent: Intent = Intent(this, FormFornecedores::class.java);
+
+            intent.putExtra(
+                "name",
+                ""
+            )
+            intent.putExtra(
+                "id",
+                ""
+            )
+
+            startActivity(intent);
+        })
+
         binding.exitInfo.setOnClickListener({
             finish();
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        var dados: ArrayList<String> = db!!.listSuplierForInput(intent.getStringExtra("suplier_id"));
+
+        autoCompleteTxt = findViewById<AutoCompleteTextView>(R.id.suplierId)
+
+        adapterItems = ArrayAdapter<String>(this, R.layout.list_item, dados)
+        autoCompleteTxt?.setAdapter(adapterItems)
+
+        autoCompleteTxt?.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
+            val item = parent.getItemAtPosition(position).toString()
+            Toast.makeText(applicationContext, "Item: $item", Toast.LENGTH_SHORT).show()
+        })
+
     }
 
     override fun onDestroy() {
